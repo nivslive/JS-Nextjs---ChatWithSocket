@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import style from "./Messages.module.css";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
+import jsonEmojis from "../../docs/emojis.json"
 
 export default function message(props) {
   const [message, setMessage] = useState("");
@@ -13,26 +14,27 @@ export default function message(props) {
   const [emojiName, setEmojiName] = useState([])
   const [color, setColor] = useState('')
   const [modalColor, setModalColor] = useState(false);
-  const emojiList = [
-    'love',
-    'fodase',
-    'weddy'
-  ]
+  const [darkMode, setDarkMode] = useState(false);
+  const [created, setCreated] = useState(false);
+  const emojiList = jsonEmojis.emojis
   let me = props.user;
   useEffect(() => {
-    console.log(me.USER, 'me')
-    const scripted = document.createElement("script");
-    scripted.src =
-      "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
-    document.body.appendChild(scripted);
-    scripted.addEventListener("load", () => {
-      $("#send").click(() => {
-        setTimeout(() => {
-          let scroll = $("#field").scrollTop();
-          $("#field").scrollTop(scroll + 1080);
-        }, 10);
+    if(!created) {
+      setCreated(true)
+      const scripted = document.createElement("script");
+      scripted.src =
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
+      document.body.appendChild(scripted);
+      scripted.addEventListener("load", () => {
+        $("#send").click(() => {
+          setTimeout(() => {
+            let scroll = $("#field").scrollTop();
+            $("#field").scrollTop(scroll + 1080);
+          }, 10);
+        });
       });
-    });
+    }
+
   });
 
   const changeMessage = (e) => {
@@ -78,9 +80,8 @@ export default function message(props) {
 
   return (
     <div className={style.main}>
-      <div  ref={animation} className={style.fieldset} id="field">
+      <div  ref={animation} className={style.fieldset} id="field"  style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p) => {
-          console.log(p, 'p', me, 'me', props.color)
           if (me.USER != p.user.USER) {
             return (
               <div className={style.other}>
@@ -124,7 +125,7 @@ export default function message(props) {
                   <img class={style.image_profile}
                   src={me.IMAGE_PROFILE} 
                   />
-                  <a>{"@" + me.USER}</a>
+                  <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + me.USER}</a>
                 </div>
               </div>
             );
@@ -142,6 +143,11 @@ export default function message(props) {
             }) }
 
           </div>
+          <button onClick={() => {setDarkMode(!darkMode)}} style={{'position': 'absolute', 'top': '0',
+        'width': '85px',
+        'height': '85px',}}>
+              DARK MODE
+          </button>
           <button
             style={{'background': `rgb(${color})`}}
             type="submit"

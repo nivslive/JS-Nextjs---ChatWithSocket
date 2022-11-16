@@ -3,7 +3,7 @@ const server = require("http").createServer();
 
 const io = require("socket.io")(server);
 io.on("connection", (socket) => {
-  console.log("Utilisateur connecté");
+  console.log("Conectando...");
   socket.on('channel',(data)=>{
     io.emit('message', data)
   })

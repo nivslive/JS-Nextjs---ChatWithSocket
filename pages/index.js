@@ -12,8 +12,8 @@ export default function home() {
   var username = Users;
 
   const setUser = (e) => {
-
     setUsers({...Users,"USER": e.target.value});
+    localStorage.setItem('user', JSON.stringify(Users))
   };
 
   const form = (e) => {

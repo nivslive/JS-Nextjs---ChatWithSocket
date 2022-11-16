@@ -1,0 +1,138 @@
+{
+    "rooms": [
+        {
+            "id": 1,
+            "name": "Quartin louco",
+			"slug": "quartin-louco",
+            "users": [
+                "nivs"
+            ],
+            "messages": [
+                {
+                    "user": "nivs",
+                    "colorMessage": "",
+                    "colorType": "rgb",
+                    "emojis": [],
+					"reactions": [
+						{
+							"emoji": "",
+							"quantity": 0
+						},
+						{
+							"emoji": "",
+							"quantity": 0
+						}
+					]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Quartin louco",
+			"slug": "quartin-louco",
+            "users": [
+                "nivs"
+            ],
+            "messages": [
+                {
+                    "user": "nivs",
+                    "colorMessage": "",
+                    "colorType": "rgb",
+                    "emojis": [],
+					"image": null,
+					"reactions": [
+						{
+							"emoji": "",
+							"quantity": 0
+						},
+						{
+							"emoji": "",
+							"quantity": 0
+						}
+					]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Quartin louco",
+			"slug": "quartin-louco",
+            "users": [
+                "nivs"
+            ],
+            "messages": [
+                {
+                    "user": "nivs",
+                    "colorMessage": "",
+                    "colorType": "rgb",
+                    "emojis": [],
+					"image": null,
+					"reactions": [
+						{
+							"emoji": "",
+							"quantity": 0
+						},
+						{
+							"emoji": "",
+							"quantity": 0
+						}
+					]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Quartin louco",
+			"slug": "quartin-louco",
+            "users": [
+                "nivs"
+            ],
+            "messages": [
+                {
+                    "user": "nivs",
+                    "colorMessage": "",
+                    "colorType": "rgb",
+                    "emojis": [],
+					"image": null,
+					"reactions": [
+						{
+							"emoji": "",
+							"quantity": 0
+						},
+						{
+							"emoji": "",
+							"quantity": 0
+						}
+					]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Quartin louco",
+			"slug": "quartin-louco",
+            "users": [
+                "nivs"
+            ],
+            "messages": [
+                {
+                    "user": "nivs",
+                    "colorMessage": "",
+                    "colorType": "rgb",
+                    "emojis": [],
+					"image": null,
+					"reactions": [
+						{
+							"emoji": "",
+							"quantity": 0
+						},
+						{
+							"emoji": "",
+							"quantity": 0
+						}
+					]
+                }
+            ]
+        }
+    ]
+}
