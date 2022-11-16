@@ -63,7 +63,9 @@
 }
 
 .imageFlask {
-  width: 50px;
+  width: 28rem;
+  border-radius: 97px;
+  padding: 32px;
 }
 
 #fileDisplayArea {

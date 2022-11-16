@@ -21,7 +21,7 @@ export default function message(props) {
   useEffect(() => {
     if(!created) {
       setCreated(true)
-      const scripted = document.createElement("script");
+     /* const scripted = document.createElement("script");
       scripted.src =
         "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
       document.body.appendChild(scripted);
@@ -32,7 +32,7 @@ export default function message(props) {
             $("#field").scrollTop(scroll + 1080);
           }, 10);
         });
-      });
+      });*/
     }
 
   });

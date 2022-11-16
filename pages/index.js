@@ -43,17 +43,19 @@ export default function home() {
 
 					var img = new Image();
 					img.src = reader.result;
-          img.classList.add('imageFlask')
           setUsers({...Users, "IMAGE_PROFILE": reader.result })
 					fileDisplayArea.appendChild(img);
 				}
-
+        
 				reader.readAsDataURL(file);	
+        // fileDisplayArea.getElementsByTagName('img').style.width = '50px'
 			} else {
 				fileDisplayArea.innerHTML = "File not supported!"
 			}
 		});
-    console.log(document.querySelector('#fileDisplayArea img'))
+    const img = document.querySelector('#fileDisplayArea img')
+    img.style.width = '90px'
+    img.style.borderRadius = '70px'
 
     }catch(e) {
 
@@ -82,11 +84,14 @@ export default function home() {
                 onChange={setUser}
               />
             </div>
+            <div className="d-flex justify-content-center align-items-center m-auto">
             <div>
-		      Select an image file: 
+		      Aplique uma imagem: 
 		      <input type="file" id="fileInput" />
 	        </div>
 	        <div style={{'width': '50px'}} id="fileDisplayArea"></div>
+            </div>
+
             <div className="form-group">
               <button
                 type="button"
