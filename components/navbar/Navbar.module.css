@@ -1,0 +1,13 @@
+.user {
+  color: #fff;
+  position: relative;
+  float: left;
+}
+#Contain {
+  display: flex;
+  flex-direction: column;
+}
+#Contain img {
+  position: relative;
+  left: 12px;
+}
