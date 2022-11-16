@@ -180,3 +180,18 @@
 .light-mode-text {
   color: black;
 }
+
+.systemMacro {
+
+
+}
+
+.systemMacroButton {
+  
+  background: white;
+  color: white;
+  position: relative !important;
+  width: 85px;
+  height: 85px;
+
+}

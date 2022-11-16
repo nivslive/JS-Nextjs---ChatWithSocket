@@ -14,7 +14,7 @@ export default function message(props) {
   const [emojiName, setEmojiName] = useState([])
   const [color, setColor] = useState('')
   const [modalColor, setModalColor] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [created, setCreated] = useState(false);
   const emojiList = jsonEmojis.emojis
   let me = props.user;
@@ -143,11 +143,17 @@ export default function message(props) {
             }) }
 
           </div>
-          <button onClick={() => {setDarkMode(!darkMode)}} style={{'position': 'absolute', 'top': '0',
+          <div  style={{'position': 'absolute', 'top': '0',
         'width': '85px',
         'height': '85px',}}>
+          <button  style={{'position': `relative`, 'width': '50px'}} className="systemMacroButton" onClick={() => {setDarkMode(!darkMode)}}>
               DARK MODE
           </button>
+          <button   style={{'position': `relative`, 'width': '50px'}}  className="systemMacroButton" onClick={() => {window.location.reload()}}>
+              Voltar
+          </button>
+          </div>
+
           <button
             style={{'background': `rgb(${color})`}}
             type="submit"
