@@ -81,10 +81,10 @@ export default function Message(props) {
   return (
     <div className={style.main}>
       <div  ref={animation} className={style.fieldset} id="field"  style={{'background': darkMode ? 'transparent' : 'white'}}>
-        {field.map((p) => {
+        {field.map((p, k) => {
           if (me.USER != p.user.USER) {
             return (
-              <div className={style.other}>
+              <div className={style.other} key={k}>
                 <div className={style.message_rec}>
                 <p>
                   <strong>
