@@ -6,7 +6,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
 
-export default function message(props) {
+export default function Message(props) {
   const [message, setMessage] = useState("");
   const [animation] = useAutoAnimate()
   const [field, setField] = useState([]);
