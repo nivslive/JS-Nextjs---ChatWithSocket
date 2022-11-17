@@ -92,8 +92,8 @@ export default function Message(props) {
                   </strong>
 
                   { 
-                    p.emoji.map((v) =>  {  
-                      return (<img className={style.emoji} src={`../emojis/${v}.png`} />) } 
+                    p.emoji.map((v, key) =>  {  
+                      return (<img key={key} className={style.emoji} src={`../emojis/${v}.png`} />) } 
                     )  
                   }
                 </p>
@@ -110,19 +110,19 @@ export default function Message(props) {
                 <div  className={style.message_sent} style={{'background': `rgb(${p.color})`}}>
                   <p>
 
-                    <strong class={`pr-3`}>
+                    <strong className={`pr-3`}>
                       {p.message}
                     </strong>
                     { 
-                      p.emoji.map((v) =>  {  
-                        return (<img className={style.emoji} src={`../emojis/${v}.png`} />) } 
+                      p.emoji.map((v, keyEmoji) =>  {  
+                        return (<img key={keyEmoji} className={style.emoji} src={`../emojis/${v}.png`} />) } 
                       )  
                     }
                   </p>
                 </div>
                 <br />
                 <div id={style.mess_sender}>
-                  <img class={style.image_profile}
+                  <img className={style.image_profile}
                   src={me.IMAGE_PROFILE} 
                   />
                   <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + me.USER}</a>
@@ -137,9 +137,9 @@ export default function Message(props) {
           { modalColor && <Color onChange={e => setColor(e.target.value)}/>}
         <form onSubmit={Submit}>
           <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." onChange={changeMessage} />
-          <div style={{'background': `rgb(${color})`}} class={ emojiName.length !== 0 && style.emoji_bar}>
-          { emojiName.map((v) => {
-              return <img className={style.emoji} src={`../emojis/${v}.png`} />
+          <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 && style.emoji_bar}>
+          { emojiName.map((v, key) => {
+              return <img key={key} className={style.emoji} src={`../emojis/${v}.png`} />
             }) }
 
           </div>
@@ -161,8 +161,8 @@ export default function Message(props) {
 
           >
             {
-              emojiList.map((v) => {
-                return (<img src={`../emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
+              emojiList.map((v, key) => {
+                return (<img key={key} src={`../emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
               })
             }
             <img onClick={() => {setModalColor(!modalColor)}} style={{'width': '20px', 'marginLeft': '10px'}} src="../icons/colorPicker.png" />
