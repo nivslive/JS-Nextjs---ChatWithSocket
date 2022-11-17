@@ -4,7 +4,7 @@ import style from "./Navbar.module.css";
 import dynamic from "next/dynamic";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-export default function navbar(props) {
+export default function Navbar(props) {
   let me = props.user;
   let room = props.room;
 
