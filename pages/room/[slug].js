@@ -6,7 +6,7 @@ import { setCookies, useCookies } from "react-cookie";
 import style from "../../styles/Home.module.css";
 import { useRouter } from 'next/router'
 
-export default function home() {
+export default function Home() {
   const [Users, setUsers] = useState({});
   const [logged, setLogged] = useState(0);
   const router = useRouter()
@@ -27,7 +27,6 @@ export default function home() {
     }
   };
   useEffect(() => {
-    console.log('slug', router.query.slug)
     setRoom(router.query.slug)
     var fileInput = document.getElementById('fileInput');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
