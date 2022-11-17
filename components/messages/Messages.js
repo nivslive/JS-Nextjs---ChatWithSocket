@@ -1,4 +1,4 @@
-import socket from "../../pages/socketio";
+import socket from "../../server/socketio";
 import Image from 'next/image'
 import React, { useState, useEffect } from "react";
 import style from "./Messages.module.css";

@@ -1,4 +1,4 @@
-import socket from "../socketio";
+import socket from "../../server/socketio";
 import dynamic from "next/dynamic";
 import React, { useState, useEffect, useRef } from "react";
 //import messages from "../components/messages/Messages";
