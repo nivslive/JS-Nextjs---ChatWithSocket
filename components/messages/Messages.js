@@ -51,6 +51,12 @@ export default function Message(props) {
   });
 
   const changeMessage = (e) => {
+    
+    // feature do #emoji capturado por #hashtags
+    //emojiList.map((v) => {
+    //  e.target.value === `#${v}` && setEmojiName([...emojiName, v])
+    //})
+    if(e.target.value === '#')
     console.log(e.target.value)
     if(emojiName) {
       emojiName.map((v) => {
@@ -64,8 +70,8 @@ export default function Message(props) {
   };
   const handleMessage = () => {
     cha.publish({ name: 'nivs', data:{ message: message, user: me, emoji: emojiName, color: color }});
-      // socket.emit("channel", { message: message, user: me, emoji: emojiName, color: color });
       setMessage("");
+      document.querySelector('.input-send').value = ''
       setEmojiName([]);
   };
 
@@ -92,9 +98,26 @@ export default function Message(props) {
     
   }
 
+  const enterPressed = (e) => {
+    if(message !== '') {
+      e.key === 'Enter' && handleMessage()
+    }
+
+  }
+
+  const darkModeRules = (e) => {
+    console.log(e.key)
+    /*
+              <button  style={{'position': `relative`, 'width': '50px'}} className="systemMacroButton" onClick={(e) => {darkModeRules(e);}}>
+              DARK MODE
+          </button>
+    */
+    setDarkMode(!darkMode)
+  }
+
   return (
     <div className={style.main}>
-      <div  ref={animation} className={style.fieldset} id="field"  style={{'background': darkMode ? 'transparent' : 'white'}}>
+      <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p, k) => {
           if (me.USER != p.user.USER) {
             return (
@@ -150,32 +173,31 @@ export default function Message(props) {
         })}
       </div>
 
+      <div  style={{'position': 'absolute', 'top': '0',
+        'width': '85px',
+        'height': '85px',}}>
+          <button  style={{'position': `relative`, 'width': '50px'}} className="systemMacroButton" onClick={(e) => {darkModeRules(e);}}>
+              DARK MODE
+          </button>
+          <button   style={{'position': `relative`, 'width': '50px'}}  className="systemMacroButton" onClick={() => {window.location.reload()}}>
+              Voltar
+          </button>
+      </div>
+
       <div className={style.form_sender}>
           { modalColor && <Color onChange={e => setColor(e.target.value)}/>}
         <form onSubmit={Submit}>
-          <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." onChange={changeMessage} />
+          <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." className="input-send" onChange={changeMessage}  onKeyPress={enterPressed}  />
           <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 && style.emoji_bar}>
           { emojiName.map((v, key) => {
               return <img key={key} className={style.emoji} src={`../emojis/${v}.png`} />
             }) }
 
           </div>
-          <div  style={{'position': 'absolute', 'top': '0',
-        'width': '85px',
-        'height': '85px',}}>
-          <button  style={{'position': `relative`, 'width': '50px'}} className="systemMacroButton" onClick={() => {setDarkMode(!darkMode)}}>
-              DARK MODE
-          </button>
-          <button   style={{'position': `relative`, 'width': '50px'}}  className="systemMacroButton" onClick={() => {window.location.reload()}}>
-              Voltar
-          </button>
-          </div>
-
           <button
             style={{'background': `rgb(${color})`}}
-            type="submit"
             className="btn btn-primary"
-
+            onClick={e => e.preventDefault()}
           >
             {
               emojiList.map((v, key) => {
@@ -195,7 +217,7 @@ export default function Message(props) {
               className="bi bi-chat-left-fill"
               viewBox="0 0 16 16"
             >
-              <path id="send" onKeyPress={(event) => handleMessage(event)} onClick={handleMessage} d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path id="send" onClick={handleMessage} d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
             </svg>
           </button>
         </form>
