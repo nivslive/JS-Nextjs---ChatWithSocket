@@ -30,8 +30,15 @@ export default function Message(props) {
   });
   const emojiList = jsonEmojis.emojis
   let me = props.user;
+  const cha = Ably.channels.get('event');
   useEffect(() => {
-    console.log(Ably.channels, 'ably')
+    (async function Channel() {
+      console.log('entrei aqui?')
+      await cha.subscribe('nivs', (message) => {
+        console.log('Received a greeting message in realtime: ' + message)
+      });
+    })()
+    cha.publish('nivs', 'foi?!')
     console.log(field, 'field')
     console.log(process.env.NEXT_PUBLIC_ABLY_API_KEY, 'env')
     if(!created) {
@@ -65,7 +72,7 @@ export default function Message(props) {
     setMessage(e.target.value);
   };
   const handleMessage = () => {
-    channel.publish({ name: "chat-message", data:{ message: message, user: me, emoji: emojiName, color: color }});
+    cha.publish({ name: 'nivs', data:{ message: message, user: me, emoji: emojiName, color: color }});
       // socket.emit("channel", { message: message, user: me, emoji: emojiName, color: color });
       setMessage("");
       setEmojiName([]);
