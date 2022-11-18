@@ -1,5 +1,7 @@
 import socket from "../../server/socketio";
+import { useChannel } from "../../pages/api/useChannel";
 import Image from 'next/image'
+import Ably from '../../components/Ably/ReactComponent'
 import React, { useState, useEffect } from "react";
 import style from "./Messages.module.css";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
@@ -16,9 +18,22 @@ export default function Message(props) {
   const [modalColor, setModalColor] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [created, setCreated] = useState(false);
+  const [ channel, ably ] = useChannel("chat-demo", (message) => {
+    // Here we're computing the state that'll be drawn into the message history
+    // We do that by slicing the last 199 messages from the receivedMessages buffer
+    console.log(message)
+    setField([...field, message]);
+
+    // Then finally, we take the message history, and combine it with the new message
+    // This means we'll always have up to 199 message + 1 new message, stored using the
+    // setMessages react useState hook
+  });
   const emojiList = jsonEmojis.emojis
   let me = props.user;
   useEffect(() => {
+    console.log(Ably.channels, 'ably')
+    console.log(field, 'field')
+    console.log(process.env.NEXT_PUBLIC_ABLY_API_KEY, 'env')
     if(!created) {
       setCreated(true)
      /* const scripted = document.createElement("script");
@@ -50,21 +65,22 @@ export default function Message(props) {
     setMessage(e.target.value);
   };
   const handleMessage = () => {
-      socket.emit("channel", { message: message, user: me, emoji: emojiName, color: color });
+    channel.publish({ name: "chat-message", data:{ message: message, user: me, emoji: emojiName, color: color }});
+      // socket.emit("channel", { message: message, user: me, emoji: emojiName, color: color });
       setMessage("");
       setEmojiName([]);
   };
-
+/*
   socket.on("message", (data) => {
     setField([...field, data]);
   });
-
+*/
   const Submit = (e) => {
     e.preventDefault();
-    socket.emit("message", {
+  /*  socket.emit("message", {
       user: props.user,
       mess: message,
-    });
+    });*/
     e.target.reset();
   };
   const handleColor = (e) => { 
@@ -99,8 +115,11 @@ export default function Message(props) {
                 </p>
                 </div>
                 <br />
-                <div id={style.mess_reciever}>
-                <a>{"@" + p.user.USER}</a>
+                <div id={style.mess_sender}>
+                  <img className={style.image_profile}
+                  src={p.user.IMAGE_PROFILE} 
+                  />
+                  <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + me.USER}</a>
                 </div>
               </div>
             );
@@ -123,7 +142,7 @@ export default function Message(props) {
                 <br />
                 <div id={style.mess_sender}>
                   <img className={style.image_profile}
-                  src={me.IMAGE_PROFILE} 
+                  src={p.user.IMAGE_PROFILE} 
                   />
                   <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + me.USER}</a>
                 </div>
