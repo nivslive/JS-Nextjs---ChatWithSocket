@@ -33,14 +33,11 @@ export default function Message(props) {
   const cha = Ably.channels.get('event');
   useEffect(() => {
     (async function Channel() {
-      console.log('entrei aqui?')
       await cha.subscribe('nivs', (message) => {
-        console.log('Received a greeting message in realtime: ' + message)
+        console.log('Received a greeting message in realtime: ' + message.data)
+        // setField(message.data)
       });
     })()
-    cha.publish('nivs', 'foi?!')
-    console.log(field, 'field')
-    console.log(process.env.NEXT_PUBLIC_ABLY_API_KEY, 'env')
     if(!created) {
       setCreated(true)
      /* const scripted = document.createElement("script");
@@ -77,11 +74,11 @@ export default function Message(props) {
       setMessage("");
       setEmojiName([]);
   };
-/*
-  socket.on("message", (data) => {
-    setField([...field, data]);
+
+  cha.subscribe("nivs", (data) => {
+   setField([...field, data.data]);
+   console.log(data.data, 'data?')
   });
-*/
   const Submit = (e) => {
     e.preventDefault();
   /*  socket.emit("message", {
