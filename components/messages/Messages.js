@@ -99,7 +99,7 @@ export default function Message(props) {
           if (me.USER != p.user.USER) {
             return (
               <div className={style.other} key={k}>
-                <div className={style.message_rec}>
+                <div className={style.message_rec} style={{'background': `rgb(${p.color})`}}>
                 <p>
                   <strong>
                     {p.message}
