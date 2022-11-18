@@ -49,6 +49,7 @@ export default function Home() {
           img.classList.add('imageFlask')
           setUsers({...Users, "IMAGE_PROFILE": reader.result })
 					fileDisplayArea.appendChild(img);
+          document.querySelector('#fileDisplayArea img').style.width = '50px'
 				}
 
 				reader.readAsDataURL(file);	
@@ -56,7 +57,7 @@ export default function Home() {
 				fileDisplayArea.innerHTML = "File not supported!"
 			}
 		});
-    console.log(document.querySelector('#fileDisplayArea img'))
+    document.querySelector('#fileDisplayArea img').style.width = '50px'
 
     }catch(e) {
 
