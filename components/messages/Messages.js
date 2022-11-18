@@ -32,12 +32,6 @@ export default function Message(props) {
   let me = props.user;
   const cha = Ably.channels.get('event');
   useEffect(() => {
-    (async function Channel() {
-      await cha.subscribe('nivs', (message) => {
-        console.log('Received a greeting message in realtime: ' + message.data)
-        // setField(message.data)
-      });
-    })()
     if(!created) {
       setCreated(true)
      /* const scripted = document.createElement("script");

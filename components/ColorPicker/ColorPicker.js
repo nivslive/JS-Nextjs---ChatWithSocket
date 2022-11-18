@@ -6,9 +6,14 @@ export default function Color(){
   const [color, setColor] = useColor("hex", "#121212");
   
   return (
-    <div style={{'position': 'absolute',
+    <div style={
+                
+                {'position': 'absolute',
                  'right': '0',
-                 'bottom': '10rem'}}>
+                 'bottom': '10rem'}
+                 
+              }>
+
         <ColorPicker width={456} height={228} 
                    color={color} 
                    onChange={setColor} hideHSV dark />
