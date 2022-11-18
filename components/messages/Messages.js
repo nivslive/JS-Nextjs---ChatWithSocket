@@ -117,7 +117,7 @@ export default function Message(props) {
                   <img className={style.image_profile}
                   src={p.user.IMAGE_PROFILE} 
                   />
-                  <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + me.USER}</a>
+                  <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + p.user.USER}</a>
                 </div>
               </div>
             );
@@ -142,7 +142,7 @@ export default function Message(props) {
                   <img className={style.image_profile}
                   src={p.user.IMAGE_PROFILE} 
                   />
-                  <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + me.USER}</a>
+                  <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + p.user.USER}</a>
                 </div>
               </div>
             );
