@@ -1,4 +1,5 @@
 import socket from "../../server/socketio";
+import axios from 'axios';
 import dynamic from "next/dynamic";
 import React, { useState, useEffect, useRef } from "react";
 //import messages from "../components/messages/Messages";
@@ -27,6 +28,9 @@ export default function Home() {
     }
   };
   useEffect(() => {
+    axios.get('http://localhost:3333/chat/' + router.query.slug).then(v => {
+      console.log(v)
+    })
     setRoom(router.query.slug)
     var fileInput = document.getElementById('fileInput');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
