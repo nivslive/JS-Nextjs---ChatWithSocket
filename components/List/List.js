@@ -22,11 +22,12 @@ export default function List() {
       console.log(filtered)
     }
     return (
-  <div classList={style.modalListRooms}>
+  <div className={style.modalListRooms}>
     <button onClick={() => showRooms()}> Ver quartos</button>
     {filter.map((item, key) => 
-          <div style={{color: `white`}} key={key}>
-            {item[1][1]}
+          <div className={style.itemModalListRooms} style={{color: `white`}} key={key}>
+           <h6>  {item[1][1]} </h6>
+          <a href={`room/${item[2][1]}`}> Ir </a>
           </div>)}
     </div>
     );

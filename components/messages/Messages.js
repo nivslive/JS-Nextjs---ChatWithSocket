@@ -22,6 +22,10 @@ export default function Message(props) {
   const cha = Ably.channels.get('event');
   useEffect(() => {
     if(!created) {
+      console.log(props.response)
+      if(props.response) {
+        setField([...field, props.response])
+      }
       setCreated(true)
      /* const scripted = document.createElement("script");
       scripted.src =
@@ -70,10 +74,6 @@ export default function Message(props) {
   });
   const Submit = (e) => {
     e.preventDefault();
-  /*  socket.emit("message", {
-      user: props.user,
-      mess: message,
-    });*/
     e.target.reset();
   };
   const handleColor = (e) => { 

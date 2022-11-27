@@ -12,6 +12,8 @@ export default function Home() {
   const [logged, setLogged] = useState(0);
   const router = useRouter()
   const [room, setRoom] = useState(''); 
+  const [response, setResponse] = useState([]);
+  const [responsed, setResponsed] = useState(true);
   var username = Users;
 
   const setUser = (e) => {
@@ -28,9 +30,13 @@ export default function Home() {
     }
   };
   useEffect(() => {
-    axios.get('http://localhost:3333/chat/' + router.query.slug).then(v => {
-      console.log(v)
-    })
+    if(responsed) {
+      axios.get('http://localhost:3333/chat/' + router.query.slug).then(v => {
+        console.log(v)
+        setResponse(v.data)
+        setResponsed(false)
+      })
+    }
     setRoom(router.query.slug)
     var fileInput = document.getElementById('fileInput');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
@@ -121,7 +127,7 @@ export default function Home() {
       ) : (
         <div className={style.Main}>
           <Navbar user={username} room={room} />
-          <Messages user={username} />
+          <Messages response={response} user={username} />
         </div>
       )}
     </div>
