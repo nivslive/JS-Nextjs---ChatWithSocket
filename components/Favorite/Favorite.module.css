@@ -1,0 +1,35 @@
+.heart {
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+    color: white;
+    transform: translate(15px, 6px);
+  }
+  
+  .heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 9px;
+    height: 16px;
+    border-radius: 50px 50px 0 0;
+  }
+  .heartSelected::before, .heartSelected::after {
+    background: red;
+  }
+  .heartNoselected::before, .heartNoselected::after {
+    background: white;
+  }
+
+  
+  .heart::before {
+    left: 9px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  
+  .heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }

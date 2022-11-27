@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "room": "oi",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 2,
+        "room": "oi",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 3,
+        "room": "oi",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 4,
+        "room": "oi",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 5,
+        "room": "oi",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 6,
+        "room": "Testando!!",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 7,
+        "room": "Testando!!",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 8,
+        "room": "Testando!!",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 9,
+        "room": "Testando!!",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 10,
+        "room": "Testando!!",
+        "slug": null,
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 11,
+        "room": "Vão tomar no cu irmãos",
+        "slug": "vtnc",
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 12,
+        "room": "Vão tomar no cu irmãos",
+        "slug": "vtnc",
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 13,
+        "room": "Vão tomar no cu irmãos",
+        "slug": "vtnc",
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": null,
+        "messages": null
+    },
+    {
+        "id": 14,
+        "room": "fodase",
+        "slug": "fodase",
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": {
+            "id": 1,
+            "name": "nivs",
+            "photo": null,
+            "created_at": "2022-11-27T06:58:30.000Z",
+            "updated_at": "2022-11-27T06:58:30.000Z"
+        },
+        "messages": null
+    },
+    {
+        "id": 15,
+        "room": "fodase",
+        "slug": "fodase",
+        "created_at": "2022-11-27T06:57:18.000Z",
+        "updated_at": "2022-11-27T06:57:18.000Z",
+        "users": [{
+            "id": 1,
+            "name": "nivs",
+            "photo": null,
+            "created_at": "2022-11-27T06:58:30.000Z",
+            "updated_at": "2022-11-27T06:58:30.000Z"
+        }],
+        "messages": [{
+            "id": 1,
+            "color_type": "rgb",
+            "message": "vim aqui falar umas merdas",
+            "color": "fodase",
+            "favorites": 1,
+            "emojis": "love, fodase, e eu",
+            "created_at": "2022-11-27T06:57:55.000Z",
+            "updated_at": "2022-11-27T06:57:55.000Z"
+        }]
+    },
+    {
+        "id": 16,
+        "room": "fodase",
+        "slug": "fodase",
+        "created_at": "2022-11-27T06:57:30.000Z",
+        "updated_at": "2022-11-27T06:57:30.000Z",
+        "users": [{
+            "id": 1,
+            "name": "nivs",
+            "photo": null,
+            "created_at": "2022-11-27T06:58:30.000Z",
+            "updated_at": "2022-11-27T06:58:30.000Z"
+        }],
+        "messages": [{
+            "id": 1,
+            "color_type": "rgb",
+            "message": "vim aqui falar umas merdas",
+            "color": "fodase",
+            "favorites": 1,
+            "emojis": "love, fodase, e eu",
+            "created_at": "2022-11-27T06:57:55.000Z",
+            "updated_at": "2022-11-27T06:57:55.000Z"
+        }]
+    }
+]

@@ -1,0 +1,18 @@
+[
+    { "logged": [
+        {
+            "user": "",
+            "email": "",
+            "password":"",
+            "photo": "",
+            "logged": ""
+            }
+    ],
+        "notLogged": [
+            {
+                "user": ""
+            }
+        ]
+    }
+
+]

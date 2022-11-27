@@ -7,6 +7,7 @@ import style from "./Messages.module.css";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
+import Favorite from "../Favorite/Favorite.jsx";
 
 export default function Message(props) {
   const [message, setMessage] = useState("");
@@ -18,16 +19,6 @@ export default function Message(props) {
   const [modalColor, setModalColor] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [created, setCreated] = useState(false);
-  const [ channel, ably ] = useChannel("chat-demo", (message) => {
-    // Here we're computing the state that'll be drawn into the message history
-    // We do that by slicing the last 199 messages from the receivedMessages buffer
-    console.log(message)
-    setField([...field, message]);
-
-    // Then finally, we take the message history, and combine it with the new message
-    // This means we'll always have up to 199 message + 1 new message, stored using the
-    // setMessages react useState hook
-  });
   const emojiList = jsonEmojis.emojis
   let me = props.user;
   const cha = Ably.channels.get('event');
@@ -106,12 +97,6 @@ export default function Message(props) {
   }
 
   const darkModeRules = (e) => {
-    console.log(e.key)
-    /*
-              <button  style={{'position': `relative`, 'width': '50px'}} className="systemMacroButton" onClick={(e) => {darkModeRules(e);}}>
-              DARK MODE
-          </button>
-    */
     setDarkMode(!darkMode)
   }
 
@@ -137,6 +122,7 @@ export default function Message(props) {
                 </div>
                 <br />
                 <div id={style.mess_sender}>
+                  <Favorite />
                   <img className={style.image_profile}
                   src={p.user.IMAGE_PROFILE} 
                   />
@@ -162,6 +148,7 @@ export default function Message(props) {
                 </div>
                 <br />
                 <div id={style.mess_sender}>
+                <Favorite />
                   <img className={style.image_profile}
                   src={p.user.IMAGE_PROFILE} 
                   />
