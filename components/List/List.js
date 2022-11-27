@@ -10,16 +10,28 @@ export default function List() {
       // console.log(Object.entries(allRooms))
     })
     const showRooms = async () => {
-      const filtered = []
+      let filtered = []
       let response = []
       await axios.get('http://localhost:3333/chat').then((v) => {
         response = v.data
       })
+      console.log(response, 'res')
+      
       Object.entries(response).map((v) => {
         filtered.push(Object.entries(v[1]))
       })
+      
       setFilter(filtered)
-      console.log(filtered)
+
+      filtered.map(v => {
+        v[6] = Object.entries(v[6])
+      })
+
+      filtered.map(v => {
+       v[6][1][1] = v[6][1][1] !== null && Object.entries(v[6][1][1])
+      })
+
+      console.log(filtered, 'filtered')
     }
     return (
   <div className={style.modalListRooms}>
