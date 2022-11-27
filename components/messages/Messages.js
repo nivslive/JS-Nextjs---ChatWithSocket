@@ -1,5 +1,3 @@
-import socket from "../../server/socketio";
-import { useChannel } from "../../pages/api/useChannel";
 import Image from 'next/image'
 import Ably from '../../components/Ably/ReactComponent'
 import React, { useState, useEffect } from "react";
