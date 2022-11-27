@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 export default function Home() {
   const [Users, setUsers] = useState({});
   const [logged, setLogged] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
   const [room, setRoom] = useState(''); 
   const [response, setResponse] = useState([]);
   const [responsed, setResponsed] = useState(true);
@@ -30,14 +30,19 @@ export default function Home() {
     }
   };
   useEffect(() => {
-    if(responsed) {
-      axios.get('http://localhost:3333/chat/' + router.query.slug).then(v => {
-        console.log(v)
-        setResponse(v.data)
-        setResponsed(false)
-      })
-    }
-    setRoom(router.query.slug)
+    setTimeout(() => {
+      console.log(router.query.slug)
+      if(responsed) {
+        axios.get('http://localhost:3333/chat/' + router.query.slug).then(v => {
+          console.log(v)
+          setResponse(v.data)
+          setRoom(v.data.room)
+          setResponsed(false)
+        })
+      }
+    }, 1000)
+
+    // setRoom(router.query.slug)
     var fileInput = document.getElementById('fileInput');
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
 
@@ -85,6 +90,11 @@ export default function Home() {
             <div className="title">
               <span>
                 <p className="">NEXUS</p>
+              </span>
+            </div>
+            <div className="">
+              <span>
+                <p className=""><span className="font-weight-bold">Quarto:</span> {response.room}</p>
               </span>
             </div>
             <div className="form-group">

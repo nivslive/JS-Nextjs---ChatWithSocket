@@ -19,6 +19,15 @@
     overflow: auto;
 }
 
+.modalListRooms button {
+    border: 2px solid deeppink;
+    border-radius: 20px;
+    padding: 7px;
+    background: transparent;
+    color: #ff72b1;
+    width: 130px;
+}
+
 .itemModalListRooms {
     display: flex;
     justify-content: space-between;

@@ -16,15 +16,16 @@ export default function Message(props) {
   const [color, setColor] = useState('')
   const [modalColor, setModalColor] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const [response, setResponse] = useState([]);
   const [created, setCreated] = useState(false);
   const emojiList = jsonEmojis.emojis
   let me = props.user;
   const cha = Ably.channels.get('event');
   useEffect(() => {
     if(!created) {
-      console.log(props.response)
+      console.log(props.response, 'responded')
       if(props.response) {
-        setField([...field, props.response])
+       setResponse([...response, props.response])
       }
       setCreated(true)
      /* const scripted = document.createElement("script");
