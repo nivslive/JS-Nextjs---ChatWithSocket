@@ -87,13 +87,13 @@ export default function Message(props) {
     setMessage(e.target.value);
   };
   const handleMessage = () => {
-    cha.publish({ name: 'nivs', data:{ message: message, user: me, emoji: emojiName, color: color }});
+    cha.publish({ name: props.slug, data:{ message: message, user: me, emoji: emojiName, color: color }});
       setMessage("");
       document.querySelector('.input-send').value = ''
       setEmojiName([]);
   };
 
-  cha.subscribe("nivs", (data) => {
+  cha.subscribe(props.slug, (data) => {
    setField([...field, data.data]);
    console.log(data.data, 'data?')
   });

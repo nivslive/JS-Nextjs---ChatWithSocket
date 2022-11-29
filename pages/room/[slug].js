@@ -137,7 +137,7 @@ export default function Home() {
       ) : (
         <div className={style.Main}>
           <Navbar user={username} room={room} />
-          <Messages response={response} user={username} />
+          <Messages slug={router.query.slug} response={response} user={username} />
         </div>
       )}
     </div>
