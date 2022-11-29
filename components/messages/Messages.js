@@ -136,7 +136,24 @@ export default function Message(props) {
   }
 
   const openAllRooms = () => {
+    console.log(allRooms)
+    // document.querySelector('.List_insideChat__wmLw_').setAttribute(`style`,       
+    //  !allRooms ? 
+    //  `transform: translate(-50%, 50%);` 
+    //    :  
+    //  `transform: translate(-50%,-50%)`, `!important` ) 
     setAllRooms(!allRooms)
+    setTimeout(() => {
+      document.querySelector('.List_insideChat__wmLw_').style.transition = `2s`
+      document.querySelector('.List_insideChat__wmLw_').setAttribute(`style`,       
+       allRooms ? 
+        `transform: translate(-200%, -50%);` 
+         :  
+        `transform: translate(-50%,-50%)`, `!important` ) 
+
+    }, 50
+    )
+    setMoreInfo(false)
   }
 
   const darkModeRules = (e) => {
@@ -147,11 +164,12 @@ export default function Message(props) {
     document.querySelector('header').style.transition = '0.3s'
     document.querySelector('header').style.transform = !moreInfo ? 'translateY(0rem)' : 'translateY(-10rem)'
     setMoreInfo(!moreInfo)
+    setAllRooms(false)
   }
 
   return (
     <div className={style.main}>
-      {allRooms &&     <List listInsideChat={true} />}
+      <List listInsideChat={true} />
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p, k) => {
           if (me.USER != p.user.USER) {
@@ -216,7 +234,8 @@ export default function Message(props) {
           {{'position': 'absolute', 'top': '16px',
           'display': 'flex',
           'marginLeft': !moreInfo ? 'auto' : 'initial', 
-          'marginRight': 'auto'
+          'marginRight': 'auto',
+          'zIndex': '9999'
           }}>
           <div className="pl-md-3 d-flex align-items-center justify-content-center">
 
