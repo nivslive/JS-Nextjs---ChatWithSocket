@@ -210,3 +210,11 @@
   color: deepskyblue;
   border: 1px solid deepskyblue;
 }
+
+.littleLogo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+  color: white;
+  text-shadow: 4px 0px 7px #ff58b2;
+}

@@ -6,6 +6,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
 import Favorite from "../Favorite/Favorite.jsx";
+import dynamic from 'next/dynamic';
 
 export default function Message(props) {
   const [message, setMessage] = useState("");
@@ -19,9 +20,11 @@ export default function Message(props) {
   const [response, setResponse] = useState([]);
   const [responseMessages, setResponseMessages] = useState([]);
   const [created, setCreated] = useState(false);
+  const [moreInfo, setMoreInfo] = useState(false);
   const emojiList = jsonEmojis.emojis
   let me = props.user;
   const cha = Ably.channels.get('event');
+  const Logo = dynamic(() => import("../Logo/Logo"));
   useEffect(() => {
     if(!created) {
       console.log(props.response, 'responded')
@@ -125,6 +128,12 @@ export default function Message(props) {
     setDarkMode(!darkMode)
   }
 
+  const openMoreInfo = () => {
+    document.querySelector('header').style.transition = '0.3s'
+    document.querySelector('header').style.transform = !moreInfo ? 'translateY(0rem)' : 'translateY(-10rem)'
+    setMoreInfo(!moreInfo)
+  }
+
   return (
     <div className={style.main}>
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
@@ -185,15 +194,39 @@ export default function Message(props) {
         })}
       </div>
 
-      <div  style={{'position': 'absolute', 'top': '0',
-        'width': '85px',
-        'height': '85px',}}>
-          <button  style={{'position': `relative`, 'width': '50px'}} className={style.systemMacroButton} onClick={(e) => {darkModeRules(e);}}>
-              DARK MODE
-          </button>
-          <button   style={{'position': `relative`, 'width': '50px'}}  className={style.systemMacroButton} onClick={() => {window.location.reload()}}>
-              Voltar
-          </button>
+      <div  
+        style=
+          {{'position': 'absolute', 'top': '16px',
+          'display': 'flex',
+          'marginLeft': !moreInfo ? 'auto' : 'initial', 
+          'marginRight': 'auto'
+          }}>
+            <h5 className={style.littleLogo}> NEXUS </h5>
+            <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
+                      className={style.systemMacroButton} 
+                      onClick={() => {openMoreInfo()}}>
+              {moreInfo ? `+` : '-'} 
+            </button>
+
+            <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
+                      className={style.systemMacroButton} 
+                      onClick={() => {openAllRooms()}}>
+              A
+            </button>
+
+            <button  style={{'position': `relative`, 'width': '36px', 'height': '36px'}} 
+                     className={style.systemMacroButton} 
+                     onClick={(e) => {darkModeRules(e);}}>
+                D
+            </button>
+
+            <button  style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
+                     className={style.systemMacroButton} 
+                     onClick={() => {window.location.reload()}}>
+                V
+            </button>
+            
+
       </div>
 
       <div className={style.form_sender}>
