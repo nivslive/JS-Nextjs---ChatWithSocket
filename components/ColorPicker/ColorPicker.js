@@ -1,14 +1,16 @@
 
+import { useEffect, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
   
-export default function Color(){
-  const [color, setColor] = useColor("hex", "#121212");
-  
+export default function Color(props){
+  const [color, setColor] = useColor("hex", "#121212"); 
   return (
-    <div style={
+    <div className="modal-color-picker" style={
                 
-                {'position': 'absolute',
+                {
+                  'display': props.open ? 'initial' : 'none',
+                  'position': 'absolute',
                  'right': '0',
                  'bottom': '10rem'}
                  

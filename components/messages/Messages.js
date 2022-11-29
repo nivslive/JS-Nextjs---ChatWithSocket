@@ -17,6 +17,7 @@ export default function Message(props) {
   const [modalColor, setModalColor] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [response, setResponse] = useState([]);
+  const [responseMessages, setResponseMessages] = useState([]);
   const [created, setCreated] = useState(false);
   const emojiList = jsonEmojis.emojis
   let me = props.user;
@@ -24,10 +25,30 @@ export default function Message(props) {
   useEffect(() => {
     if(!created) {
       console.log(props.response, 'responded')
+
+
       if(props.response) {
        setResponse([...response, props.response])
       }
       setCreated(true)
+      if(props.response.messages !== null) {
+        console.log(props.response.messages, 'oi?')
+        const array = []
+        array.push(props.response.messages)
+        console.log(array)
+        setResponseMessages(array);
+        console.log(responseMessages, 'favorites')
+      }
+
+    /*  filtered.map(v => {
+        v[6] = Object.entries(v[6])
+      })
+
+      filtered.map(v => {
+        v[5][1] = v[5][1] !== null && Object.entries(v[5][1])
+        v[6][1][1] = v[6][1][1] !== null && Object.entries(v[6][1][1])
+      })*/
+
      /* const scripted = document.createElement("script");
       scripted.src =
         "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
@@ -79,13 +100,18 @@ export default function Message(props) {
   };
   const handleColor = (e) => { 
     try {
-      document.querySelector('.rcp-fields').style.display = 'none'
       const item = document.querySelector('.rcp-fields-element-input')
       setColor(item.value)
     } catch(e) {
 
     }
     
+  }
+
+  const handleModalColor = () => {
+    setModalColor(!modalColor)
+    document.querySelector('.rcp-fields').style.display = 'none'
+    // document.querySelector('.rcp-fields-element .hex-element').style.display = 'none'
   }
 
   const enterPressed = (e) => {
@@ -162,16 +188,16 @@ export default function Message(props) {
       <div  style={{'position': 'absolute', 'top': '0',
         'width': '85px',
         'height': '85px',}}>
-          <button  style={{'position': `relative`, 'width': '50px'}} className="systemMacroButton" onClick={(e) => {darkModeRules(e);}}>
+          <button  style={{'position': `relative`, 'width': '50px'}} className={style.systemMacroButton} onClick={(e) => {darkModeRules(e);}}>
               DARK MODE
           </button>
-          <button   style={{'position': `relative`, 'width': '50px'}}  className="systemMacroButton" onClick={() => {window.location.reload()}}>
+          <button   style={{'position': `relative`, 'width': '50px'}}  className={style.systemMacroButton} onClick={() => {window.location.reload()}}>
               Voltar
           </button>
       </div>
 
       <div className={style.form_sender}>
-          { modalColor && <Color onChange={e => setColor(e.target.value)}/>}
+          <Color open={modalColor} onChange={e => setColor(e.target.value)}/>
         <form onSubmit={Submit}>
           <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." className="input-send" onChange={changeMessage}  onKeyPress={enterPressed}  />
           <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 && style.emoji_bar}>
@@ -190,7 +216,7 @@ export default function Message(props) {
                 return (<img key={key} src={`../emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
               })
             }
-            <img onClick={() => {setModalColor(!modalColor)}} style={{'width': '20px', 'marginLeft': '10px'}} src="../icons/colorPicker.png" />
+            <img onClick={() => {handleModalColor()}} style={{'width': '20px', 'marginLeft': '10px'}} src="../icons/colorPicker.png" />
             { modalColor && <img onClick={handleColor} ref={animation} style={{'width': '30px'}} src="../icons/acceptColorPicker.png" /> }
 
 

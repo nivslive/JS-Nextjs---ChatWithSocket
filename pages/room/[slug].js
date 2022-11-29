@@ -33,7 +33,7 @@ export default function Home() {
     setTimeout(() => {
       console.log(router.query.slug)
       if(responsed) {
-        axios.get('http://localhost:3333/chat/' + router.query.slug).then(v => {
+        axios.get('http://localhost:3333/chat/room/' + router.query.slug).then(v => {
           console.log(v)
           setResponse(v.data)
           setRoom(v.data.room)
