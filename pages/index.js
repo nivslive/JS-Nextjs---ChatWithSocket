@@ -7,7 +7,7 @@ export default function Index() {
   return (
 <div>
     <Logo />
-    <List />
+    <List listInsideChat={false} />
   </div>
   );
 }

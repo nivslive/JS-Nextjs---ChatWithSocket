@@ -7,7 +7,7 @@ import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
 import Favorite from "../Favorite/Favorite.jsx";
 import dynamic from 'next/dynamic';
-import { faArrowLeft, faList } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faList, faInfo, faArrowUp, faFont } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Message(props) {
@@ -17,6 +17,7 @@ export default function Message(props) {
   const [emoji, setEmoji] = useState([])
   const [emojiName, setEmojiName] = useState([])
   const [color, setColor] = useState('')
+  const [characterLength, setCharacterLength] = useState(0);
   const [modalColor, setModalColor] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [allRooms, setAllRooms] = useState(false);
@@ -72,7 +73,7 @@ export default function Message(props) {
   });
 
   const changeMessage = (e) => {
-    
+    console.log(e.target.value.length)
     // feature do #emoji capturado por #hashtags
     //emojiList.map((v) => {
     //  e.target.value === `#${v}` && setEmojiName([...emojiName, v])
@@ -86,14 +87,19 @@ export default function Message(props) {
         }
       })
     }
-
-    setMessage(e.target.value);
+    if(e.target.value.length <= 144) {
+      setCharacterLength(e.target.value.length)
+      setMessage(e.target.value);
+    } else {
+      e.preventDefault()
+    }
   };
   const handleMessage = () => {
     cha.publish({ name: props.slug, data:{ message: message, user: me, emoji: emojiName, color: color }});
       setMessage("");
       document.querySelector('.input-send').value = ''
       setEmojiName([]);
+      setCharacterLength(0);
   };
 
   cha.subscribe(props.slug, (data) => {
@@ -143,7 +149,7 @@ export default function Message(props) {
 
   return (
     <div className={style.main}>
-      { allRooms && <List /> }
+      {allRooms &&     <List listInsideChat={true} />}
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p, k) => {
           if (me.USER != p.user.USER) {
@@ -210,7 +216,7 @@ export default function Message(props) {
           'marginLeft': !moreInfo ? 'auto' : 'initial', 
           'marginRight': 'auto'
           }}>
-          <div className="pl-md-3 d-flex">
+          <div className="pl-md-3 d-flex align-items-center justify-content-center">
 
             <div className={`${style.logoBox} d-flex justify-content-center align-items-center`}>
               <h5 className={`${style.littleLogo}`}> yorus.club </h5> 
@@ -220,7 +226,7 @@ export default function Message(props) {
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                       className={style.systemMacroButton} 
                       onClick={() => {openMoreInfo()}}>
-              {moreInfo ? `-` : '+'} 
+             <FontAwesomeIcon icon={!moreInfo ? faInfo : faArrowUp} />
 
             </button>
 
@@ -229,7 +235,14 @@ export default function Message(props) {
                       onClick={() => {openAllRooms()}}>
               <FontAwesomeIcon icon={faList} />
             </button>
-
+            { characterLength !== 0 && 
+            
+            <p className="text-white my-auto">
+              { characterLength +  `/144 ` }               
+            <FontAwesomeIcon icon={faFont} />
+            </p> 
+            
+            }
 
           </div>
 
@@ -243,13 +256,14 @@ export default function Message(props) {
             </button>
 
           </div>
-          
-
+        
       </div>
 
       <div className={style.form_sender}>
+
           <Color open={modalColor} onChange={e => setColor(e.target.value)}/>
         <form onSubmit={Submit}>
+          
           <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." className="input-send" onChange={changeMessage}  onKeyPress={enterPressed}  />
           <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 && style.emoji_bar}>
           { emojiName.map((v, key) => {

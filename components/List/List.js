@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Filter } from "../../helpers/Filter";
 // import dynamic from "next/dynamic";
 
-export default function List() {
+export default function List(props) {
     const [filter, setFilter] = useState([]);
     const [created, setCreated] = useState(false);
     useEffect(() => {
@@ -57,7 +57,7 @@ export default function List() {
       setFilter(filtered)
     }
     return (
-  <div className={style.modalListRooms}>
+  <div className={`${style.modalListRooms} ${props.listInsideChat ? style.insideChat : ''}`}>
     <button onClick={() => showRooms()}> Ver quartos</button>
     {filter.map((item, key) => 
           <div className={style.itemModalListRooms} style={{color: `white`}} key={key}>
