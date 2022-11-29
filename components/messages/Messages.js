@@ -203,7 +203,12 @@ export default function Message(props) {
           'marginRight': 'auto'
           }}>
           <div className="pl-md-3 d-flex">
-          <h5 className={style.littleLogo}> NEXUS </h5>
+
+            <div className={`${style.logoBox} d-flex justify-content-center align-items-center`}>
+              <h5 className={`${style.littleLogo}`}> yorus.club </h5> 
+              <img className={style.logoIcon} src="../icon.png"/>
+            </div>
+
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                       className={style.systemMacroButton} 
                       onClick={() => {openMoreInfo()}}>

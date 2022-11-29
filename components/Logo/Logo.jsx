@@ -4,10 +4,9 @@ import style from "./Logo.module.css";
 
 export default function List() {
     return (
-    <div className={style.title}>
-        <span>
-          <p className="">NEXUS</p>
-        </span>
+    <div className={`${style.logoBox} d-flex justify-content-center align-items-center`}>
+      <h5 className={`${style.littleLogo}`}> yorus.club </h5> 
+      <img className={style.logoIcon} src="../icon.png"/>
     </div>
     );
 }

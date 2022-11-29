@@ -214,10 +214,24 @@
   border: 1px solid deepskyblue;
 }
 
-.littleLogo {
+.logoBox {
+  margin-right: 20px;
+}
+
+.logoBox .littleLogo {
   display: flex;
   align-items: center;
-  margin: 0 24px;
+  margin: 0 10px;
   color: white;
   text-shadow: 4px 0px 7px #ff58b2;
+  font-weight: 100;
+}
+
+
+.logoBox .logoIcon {
+  width: 39px;
+  height: 39px;
+  filter: invert(1);
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: invert(1) drop-shadow(5px 5px 15px white);
 }

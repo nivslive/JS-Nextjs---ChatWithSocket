@@ -1,16 +1,21 @@
-.title {  
-        text-align: center;
-        background-color: #0d6efd;
-        border-radius: 20px 20px 0px 20px;
-        font-size: 40px;
-        color: white;
-        width: 150px;
-        height: 80px;
-        margin: auto;
-        margin-bottom: 23px;
-        margin-top: 23px;
-        line-height: 80px;
+.logoBox {
+        margin-right: 20px;
+      }
+      
+      .logoBox .littleLogo {
         display: flex;
         align-items: center;
-        justify-content: center;
-}
+        margin: 0 10px;
+        color: white;
+        text-shadow: 4px 0px 7px #ff58b2;
+        font-weight: 100;
+      }
+      
+      
+      .logoBox .logoIcon {
+        width: 39px;
+        height: 39px;
+        filter: invert(1);
+        -webkit-filter: drop-shadow(5px 5px 5px #222);
+        filter: invert(1) drop-shadow(5px 5px 15px white);
+      }

@@ -9,7 +9,7 @@ export default function Navbar(props) {
   let room = props.room;
 
   return (
-    <header className="d-flex justify-content-center py-3 bg-primary" style={{transform: 'translateY(-200px)'}}>
+    <header className="d-flex justify-content-center py-3" style={{transform: 'translateY(-200px)'}}>
       <div className="dropdown text-center" id={style.Contain}>
       <p className={style.user} style={{'fontWeight': 'bold'}}> QUARTO:  { room } </p>
         <a
