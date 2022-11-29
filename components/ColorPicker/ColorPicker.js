@@ -11,8 +11,8 @@ export default function Color(props){
                 {
                   'display': props.open ? 'initial' : 'none',
                   'position': 'absolute',
-                 'right': '0',
-                 'bottom': '10rem'}
+                 'right': '22px',
+                 'bottom': '4rem'}
                  
               }>
 

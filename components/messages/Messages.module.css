@@ -24,25 +24,29 @@
 
 .form_sender input {
   overflow-x: hidden;
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  display: block;
-  width: 80%;
-  padding: 0.375rem 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 13px;
+  width: 76%;
+  padding: 14px;
+  margin: 19px;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: bold;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 3px solid #ac00a7;
 }
 .form_sender button {
   width: 20%;
   position: fixed;
-  border: 1px solid #ced4da;
-  right: 0;
-  bottom: 0;
+  right: 24px;
+  bottom: 28px;
 }
 
 .main {
@@ -69,7 +73,7 @@
   display: inline;
   margin: 20px;
   position: absolute;
-  bottom: 34px;
+  bottom: 64px;
   transition: 1s;
   box-shadow: 0px 6px 6px #000000;
   padding: 2px;
@@ -197,5 +201,12 @@
   border: 2px solid white;
   margin: 10px;
   box-shadow: 0px -2px 46px deeppink;
+}
 
+.systemMacroButton:hover {
+  width: 50px;
+  transition: 0.2s;
+  background: #0b0078;
+  color: deepskyblue;
+  border: 1px solid deepskyblue;
 }
