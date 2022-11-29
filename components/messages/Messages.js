@@ -98,6 +98,8 @@ export default function Message(props) {
     cha.publish({ name: props.slug, data:{ message: message, user: me, emoji: emojiName, color: color }});
       setMessage("");
       document.querySelector('.input-send').value = ''
+      // let messageList = document.querySelector('.fieldset')
+      // messageList.scrollTop = messageList.scrollHeight;
       setEmojiName([]);
       setCharacterLength(0);
   };
