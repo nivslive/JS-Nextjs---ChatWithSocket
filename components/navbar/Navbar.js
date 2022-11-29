@@ -14,13 +14,9 @@ export default function Navbar(props) {
       <p className={style.user} style={{'fontWeight': 'bold'}}> QUARTO:  { room } </p>
         <a
           href="#"
-          className="d-block text-decoration-none dropdown-toggle"
-          id="dropdownUser1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
         >
           <img
-            src={me.IMAGE_PROFILE !== undefined ? me.IMAGE_PROFILE : 'chater.png'}
+            src={me.IMAGE_PROFILE !== undefined ? me.IMAGE_PROFILE : '../chater.png'}
             alt="mdo"
             width="32"
             height="32"

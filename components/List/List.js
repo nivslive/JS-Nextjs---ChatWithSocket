@@ -6,8 +6,31 @@ import { Filter } from "../../helpers/Filter";
 
 export default function List() {
     const [filter, setFilter] = useState([]);
+    const [created, setCreated] = useState(false);
     useEffect(() => {
+      if(created) {
+        let filtered = []
+        let res = []
+        (async function() {
+          await axios.get('http://localhost:3333/chat').then((v) => {
+            res = v.data
+            console.log(res, 'rees')
+            })
+        })()
+        Object.entries(res).map((v) => {
+          filtered.push(Object.entries(v[1]))
+        })
+        
+        filtered.map(v => {
+          v[6] = Object.entries(v[6])
+        })
   
+        filtered.map(v => {
+          v[5][1] = v[5][1] !== null && Object.entries(v[5][1])
+          v[6][1][1] = v[6][1][1] !== null && Object.entries(v[6][1][1])
+        })
+        setFilter(filtered)
+      }
       // console.log(Object.entries(allRooms))
     })
     const showRooms = async () => {

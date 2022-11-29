@@ -7,6 +7,8 @@ import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
 import Favorite from "../Favorite/Favorite.jsx";
 import dynamic from 'next/dynamic';
+import { faArrowLeft, faList } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Message(props) {
   const [message, setMessage] = useState("");
@@ -17,6 +19,7 @@ export default function Message(props) {
   const [color, setColor] = useState('')
   const [modalColor, setModalColor] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const [allRooms, setAllRooms] = useState(false);
   const [response, setResponse] = useState([]);
   const [responseMessages, setResponseMessages] = useState([]);
   const [created, setCreated] = useState(false);
@@ -24,7 +27,7 @@ export default function Message(props) {
   const emojiList = jsonEmojis.emojis
   let me = props.user;
   const cha = Ably.channels.get('event');
-  const Logo = dynamic(() => import("../Logo/Logo"));
+  const List = dynamic(() => import("../List/List"));
   useEffect(() => {
     if(!created) {
       console.log(props.response, 'responded')
@@ -124,6 +127,10 @@ export default function Message(props) {
 
   }
 
+  const openAllRooms = () => {
+    setAllRooms(!allRooms)
+  }
+
   const darkModeRules = (e) => {
     setDarkMode(!darkMode)
   }
@@ -136,6 +143,7 @@ export default function Message(props) {
 
   return (
     <div className={style.main}>
+      { allRooms && <List /> }
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p, k) => {
           if (me.USER != p.user.USER) {
@@ -212,13 +220,14 @@ export default function Message(props) {
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                       className={style.systemMacroButton} 
                       onClick={() => {openMoreInfo()}}>
-              {moreInfo ? `+` : '-'} 
+              {moreInfo ? `-` : '+'} 
+
             </button>
 
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                       className={style.systemMacroButton} 
                       onClick={() => {openAllRooms()}}>
-              A
+              <FontAwesomeIcon icon={faList} />
             </button>
 
 
@@ -230,7 +239,7 @@ export default function Message(props) {
           <button  style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                      className={style.systemMacroButton} 
                      onClick={() => {window.location.reload()}}>
-                V
+              <FontAwesomeIcon icon={faArrowLeft} />
             </button>
 
           </div>

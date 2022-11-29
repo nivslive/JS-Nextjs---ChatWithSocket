@@ -19,7 +19,8 @@ header {
 }
 
 .registration-form form {
-  background-color: #fff;
+  background-color: #0d033c;
+  color: white;
   max-width: 600px;
   margin: auto;
   padding: 50px 70px;
@@ -60,15 +61,16 @@ header {
 
 .registration-form .social-media {
   max-width: 600px;
-  background-color: #fff;
+  background-color: #360a6e;
   margin: auto;
   padding: 35px;
   text-align: center;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  color: #9fadca;
+  color: #8ef1ff;
+  text-shadow: 0px 0px 28px #ffffff;
   border-top: 1px solid #dee9ff;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  box-shadow: 0px 2px 10px rgb(0 0 0 / 48%);
 }
 
 .registration-form .social-icons a:hover {

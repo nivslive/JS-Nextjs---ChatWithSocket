@@ -82,16 +82,13 @@ export default function Home() {
 
   const Messages = dynamic(() => import("../../components/messages/Messages"));
   const Navbar = dynamic(() => import("../../components/navbar/Navbar"));
+  const Logo = dynamic(() => import("../../components/Logo/Logo"));
   return (
     <div className="main" style={{ left: "50%" }}>
       {!logged ? (
         <div className="registration-form">
           <form onSubmit={form}>
-            <div className="title">
-              <span>
-                <p className="">NEXUS</p>
-              </span>
-            </div>
+            <Logo />
             <div className="">
               <span>
                 <p className=""><span className="font-weight-bold">Quarto:</span> {response.room}</p>
