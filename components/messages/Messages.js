@@ -194,14 +194,16 @@ export default function Message(props) {
         })}
       </div>
 
-      <div  
+      <div
+        className="d-flex w-100 align-items-center justify-content-between px-3"  
         style=
           {{'position': 'absolute', 'top': '16px',
           'display': 'flex',
           'marginLeft': !moreInfo ? 'auto' : 'initial', 
           'marginRight': 'auto'
           }}>
-            <h5 className={style.littleLogo}> NEXUS </h5>
+          <div className="pl-md-3 d-flex">
+          <h5 className={style.littleLogo}> NEXUS </h5>
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                       className={style.systemMacroButton} 
                       onClick={() => {openMoreInfo()}}>
@@ -214,18 +216,20 @@ export default function Message(props) {
               A
             </button>
 
-            <button  style={{'position': `relative`, 'width': '36px', 'height': '36px'}} 
-                     className={style.systemMacroButton} 
-                     onClick={(e) => {darkModeRules(e);}}>
-                D
-            </button>
 
-            <button  style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
+          </div>
+
+          <div className="pr-md-3 d-flex">
+
+
+          <button  style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
                      className={style.systemMacroButton} 
                      onClick={() => {window.location.reload()}}>
                 V
             </button>
-            
+
+          </div>
+          
 
       </div>
 

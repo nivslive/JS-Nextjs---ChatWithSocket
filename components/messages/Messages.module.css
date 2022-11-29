@@ -37,10 +37,13 @@
   font-size: 1rem;
   font-weight: bold;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  color: #ffffff;
+  background-color: #260033;
   background-clip: padding-box;
   border: 3px solid #ac00a7;
+}
+.form_sender input::placeholder {
+  color: white;
 }
 .form_sender button {
   width: 20%;
