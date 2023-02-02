@@ -8,31 +8,14 @@ export default function List(props) {
     const [filter, setFilter] = useState([]);
     const [created, setCreated] = useState(false);
     useEffect(() => {
-      if(created) {
-        let filtered = []
-        let res = []
-        (async function() {
-          await axios.get('http://localhost:3333/chat').then((v) => {
-            res = v.data
-            console.log(res, 'rees')
-            })
-        })()
-        Object.entries(res).map((v) => {
-          filtered.push(Object.entries(v[1]))
-        })
-        
-        filtered.map(v => {
-          v[6] = Object.entries(v[6])
-        })
-  
-        filtered.map(v => {
-          v[5][1] = v[5][1] !== null && Object.entries(v[5][1])
-          v[6][1][1] = v[6][1][1] !== null && Object.entries(v[6][1][1])
-        })
-        setFilter(filtered)
+
+      if(!created) {
+        showRooms()
+        setCreated(true)
       }
       // console.log(Object.entries(allRooms))
     })
+    
     const showRooms = async () => {
       let filtered = []
       let res = []
@@ -58,7 +41,11 @@ export default function List(props) {
     }
     return (
   <div className={`${style.modalListRooms} ${props.listInsideChat ? style.insideChat : ''}`}>
-    <button onClick={() => showRooms()}> Ver quartos</button>
+    <span className="d-flex justify-content-center">
+    <button onClick={() => showRooms()}> Todos </button>
+    <button onClick={() => showRooms()}> Mais Populares</button>
+    </span>
+
     {filter.map((item, key) => 
           <div className={style.itemModalListRooms} style={{color: `white`}} key={key}>
               <h6>  {item[1][1]} </h6>
