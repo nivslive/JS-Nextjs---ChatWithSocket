@@ -20,9 +20,11 @@
   },
   "include": [
     "next-env.d.ts",
+    "./*.ts",
     "**/*.ts",
+    "**/**/*.ts",
     "**/*.tsx"
-  ],
+, "slices/counterSlice.js", "slices/counterSlice.js"    ],
   "exclude": [
     "node_modules"
   ]

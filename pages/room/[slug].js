@@ -3,7 +3,8 @@ import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 import style from "../../styles/Home.module.css";
 import { useRouter } from 'next/router'
-
+import { useDispatch, useSelector } from 'react-redux';
+import {selectAuthState} from '../../slices/authSlice'
 export default function Home() {
   const [Users, setUsers] = useState({});
   const [logged, setLogged] = useState(0);
@@ -26,7 +27,11 @@ export default function Home() {
       window.alert("Cadastre-se. porra.");
     }
   };
+  const authState = useSelector(selectAuthState);
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    console.log(authState, 'authstate');
     setTimeout(() => {
       console.log(router.query.slug)
       if(responsed) {
