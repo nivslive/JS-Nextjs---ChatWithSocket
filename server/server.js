@@ -1,15 +1,3 @@
-// import Socket from "socket.io";
-const server = require("http").createServer();
-import { io } from "socket.io-client";
-// import { useState } from "react";
-const servering = require("socket.io")(server);
-servering.on("connection", (socket) => {
-  console.log("Conectando...");
-  socket.on('channel',(data)=>{
-    servering.emit('message', data)
-  })
-
-});
-server.listen(3001);
-
-
+import Ably from "ably/promises";
+const ably = new Ably.Realtime.Promise('ds5yeg.IL7zoA:shr09DKtfzxiFj8AveGuMB8NdWlvlqkd6KtlBfeo5Ew');
+export default ably;

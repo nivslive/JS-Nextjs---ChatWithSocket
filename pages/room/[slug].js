@@ -1,8 +1,6 @@
-import socket from "../../server/socketio";
 import axios from 'axios';
 import dynamic from "next/dynamic";
 import React, { useState, useEffect, useRef } from "react";
-//import messages from "../components/messages/Messages";
 import { setCookies, useCookies } from "react-cookie";
 import style from "../../styles/Home.module.css";
 import { useRouter } from 'next/router'
@@ -80,7 +78,7 @@ export default function Home() {
 		
   })
 
-  const Messages = dynamic(() => import("../../components/messages/Messages"));
+  const Messages = dynamic(() => import("../../components/messages/Messages.tsx"));
   const Navbar = dynamic(() => import("../../components/navbar/Navbar"));
   const Logo = dynamic(() => import("../../components/Logo/Logo"));
   return (

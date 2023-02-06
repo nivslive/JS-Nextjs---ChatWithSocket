@@ -1,28 +1,28 @@
 import Image from 'next/image'
-import Ably from '../../components/Ably/ReactComponent'
+import Ably from '../../server/server'
 import React, { useState, useEffect } from "react";
 import style from "./Messages.module.css";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
-import Favorite from "../Favorite/Favorite.jsx";
+import Favorite from "../Chat/Favorite/Favorite.jsx";
 import dynamic from 'next/dynamic';
 import { faArrowLeft, faList, faInfo, faArrowUp, faFont } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default function Message(props) {
+export default function Message(props: any) {
   const [message, setMessage] = useState("");
   const [animation] = useAutoAnimate()
-  const [field, setField] = useState([]);
-  const [emoji, setEmoji] = useState([])
-  const [emojiName, setEmojiName] = useState([])
-  const [color, setColor] = useState('')
-  const [characterLength, setCharacterLength] = useState(0);
-  const [modalColor, setModalColor] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
-  const [allRooms, setAllRooms] = useState(false);
-  const [response, setResponse] = useState([]);
-  const [responseMessages, setResponseMessages] = useState([]);
+  const [field, setField] = useState<any>([]);
+  const [emoji, setEmoji] = useState<any>([])
+  const [emojiName, setEmojiName] = useState<any>([])
+  const [color, setColor] = useState<any>('')
+  const [characterLength, setCharacterLength] = useState<any>(0);
+  const [modalColor, setModalColor] = useState<any>(false);
+  const [darkMode, setDarkMode] = useState<any>(true);
+  const [allRooms, setAllRooms] = useState<any>(false);
+  const [response, setResponse] = useState<any>([]);
+  const [responseMessages, setResponseMessages] = useState<any>([]);
   const [created, setCreated] = useState(false);
   const [moreInfo, setMoreInfo] = useState(false);
   const emojiList = jsonEmojis.emojis
@@ -97,7 +97,7 @@ export default function Message(props) {
   const handleMessage = () => {
     cha.publish({ name: props.slug, data:{ message: message, user: me, emoji: emojiName, color: color }});
       setMessage("");
-      document.querySelector('.input-send').value = ''
+      document.querySelector<any>('.input-send').value = ''
       // let messageList = document.querySelector('.fieldset')
       // messageList.scrollTop = messageList.scrollHeight;
       setEmojiName([]);
@@ -114,7 +114,7 @@ export default function Message(props) {
   };
   const handleColor = (e) => { 
     try {
-      const item = document.querySelector('.rcp-fields-element-input')
+      const item = document.querySelector<any>('.rcp-fields-element-input')
       setColor(item.value)
     } catch(e) {
 
@@ -124,7 +124,7 @@ export default function Message(props) {
 
   const handleModalColor = () => {
     setModalColor(!modalColor)
-    document.querySelector('.rcp-fields').style.display = 'none'
+    document.querySelector<any>('.rcp-fields').style.display = 'none'
     // document.querySelector('.rcp-fields-element .hex-element').style.display = 'none'
   }
 
@@ -144,8 +144,8 @@ export default function Message(props) {
     //  `transform: translate(-50%,-50%)`, `!important` ) 
     setAllRooms(!allRooms)
     setTimeout(() => {
-      document.querySelector('.List_insideChat__wmLw_').style.transition = `2s`
-      document.querySelector('.List_insideChat__wmLw_').setAttribute(`style`,       
+      document.querySelector<any>('.List_insideChat__wmLw_').style.transition = `2s`
+      document.querySelector<any>('.List_insideChat__wmLw_').setAttribute(`style`,       
        allRooms ? 
         `transform: translate(-200%, -50%);` 
          :  
@@ -161,8 +161,8 @@ export default function Message(props) {
   }
 
   const openMoreInfo = () => {
-    document.querySelector('header').style.transition = '0.3s'
-    document.querySelector('header').style.transform = !moreInfo ? 'translateY(0rem)' : 'translateY(-10rem)'
+    document.querySelector<any>('header').style.transition = '0.3s'
+    document.querySelector<any>('header').style.transform = ! moreInfo ? 'translateY(0rem)' : 'translateY(-10rem)'
     setMoreInfo(!moreInfo)
     setAllRooms(false)
   }
@@ -217,9 +217,11 @@ export default function Message(props) {
                 <br />
                 <div id={style.mess_sender}>
                 <Favorite />
-                  <img className={style.image_profile}
-                  src={p.user.IMAGE_PROFILE} 
-                  />
+                <Image
+                  className={style.image_profile}
+                  src={p.user.IMAGE_PROFILE}
+                  alt="profile image"
+                />
                   <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + p.user.USER}</a>
                 </div>
               </div>
