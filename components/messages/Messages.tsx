@@ -162,6 +162,8 @@ export default function Message(props: any) {
                   { 
                     p.emoji.map((v:any, key:any) =>  {  
                       return (                  <Image 
+                        width="200"
+                        height="200"
                         key={key}
                         className={style.emoji}
                         alt="image profile"
@@ -175,7 +177,9 @@ export default function Message(props: any) {
                 <div id={style.mess_sender}>
                   <Favorite />
 
-                  <Image 
+                  <Image
+                  width="200"
+                  height="200"
                   className={style.image_profile}
                   alt="image profile"
                   src={p.user.IMAGE_PROFILE}
@@ -195,7 +199,7 @@ export default function Message(props: any) {
                     </strong>
                     { 
                       p.emoji.map((v: any, keyEmoji: any) =>  {  
-                        return (<Image alt="emoji" key={keyEmoji} className={style.emoji} src={`../emojis/${v}.png`} />) } 
+                        return (<Image width="200" height="200" alt="emoji" key={keyEmoji} className={style.emoji} src={`/emojis/${v}.png`} />) } 
                       )  
                     }
                   </p>
@@ -204,6 +208,7 @@ export default function Message(props: any) {
                 <div id={style.mess_sender}>
                 <Favorite />
                 <Image
+                  width="200" height="200"
                   className={style.image_profile}
                   src={p.user.IMAGE_PROFILE}
                   alt="profile image"
@@ -229,7 +234,7 @@ export default function Message(props: any) {
 
             <div className={`${style.logoBox} d-flex justify-content-center align-items-center`}>
               <h5 className={`${style.littleLogo}`}> yorus.club </h5> 
-              <Image alt="logo icon" className={style.logoIcon} src="../icon.png"/>
+              <Image width="200" height="200" alt="logo icon" className={style.logoIcon} src="/icon.png"/>
             </div>
 
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
@@ -276,7 +281,7 @@ export default function Message(props: any) {
           <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." className="input-send" onChange={changeMessage}  onKeyPress={enterPressed}  />
           <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 ? style.emoji_bar : ''}>
           { emojiName.map((v: any, key: any) => {
-              return <Image alt="emoji" key={key} className={style.emoji} src={`../emojis/${v}.png`} />
+              return <Image width="200" height="200" alt="emoji" key={key} className={style.emoji} src={`/emojis/${v}.png`} />
             }) }
 
           </div>
@@ -287,11 +292,11 @@ export default function Message(props: any) {
           >
             {
               emojiList.map((v, key) => {
-                return (<Image alt="set emoji" key={key} src={`../emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
+                return (<Image width="200" height="200" alt="set emoji" key={key} src={`/emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
               })
             }
-            <Image alt="color picker icon" onClick={() => {handleModalColor()}} style={{'width': '20px', 'marginLeft': '10px'}} src="../icons/colorPicker.png" />
-            { modalColor && <Image alt="accept color picker" onClick={handleColor} ref={animation} style={{'width': '30px'}} src="../icons/acceptColorPicker.png" /> }
+            <Image width="30" height="20" alt="color picker icon" onClick={() => {handleModalColor()}} style={{'width': '20px', 'marginLeft': '10px'}} src="/icons/colorPicker.png" />
+            { modalColor && <Image width="30" height="30" alt="accept color picker" onClick={handleColor} ref={animation} src="/icons/acceptColorPicker.png" /> }
 
 
             <svg
