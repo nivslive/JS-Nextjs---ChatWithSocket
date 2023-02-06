@@ -5,7 +5,7 @@ import style from "./Messages.module.scss";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
-import Favorite from "../Chat/Favorite/Favorite.jsx";
+import Favorite from "../Chat/Favorite/Favorite";
 import dynamic from 'next/dynamic';
 import { faArrowLeft, faList, faInfo, faArrowUp, faFont } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -114,23 +114,12 @@ export default function Message(props: any) {
   }
 
   const openAllRooms = () => {
-    console.log(allRooms)
     // document.querySelector('.List_insideChat__wmLw_').setAttribute(`style`,       
     //  !allRooms ? 
     //  `transform: translate(-50%, 50%);` 
     //    :  
     //  `transform: translate(-50%,-50%)`, `!important` ) 
     setAllRooms(!allRooms)
-    setTimeout(() => {
-      document.querySelector<any>('.List_insideChat__wmLw_').style.transition = `2s`
-      document.querySelector<any>('.List_insideChat__wmLw_').setAttribute(`style`,       
-       allRooms ? 
-        `transform: translate(-200%, -50%);` 
-         :  
-        `transform: translate(-50%,-50%)`, `!important` ) 
-
-    }, 50
-    )
     setMoreInfo(false)
   }
 
@@ -147,7 +136,7 @@ export default function Message(props: any) {
 
   return (
     <div className={`${style.main}`}>
-      <List listInsideChat={true} />
+      <List listInsideChat={true} open={allRooms} />
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p: any, k:any) => {
           if (me.USER != p.user.USER) {
@@ -288,7 +277,7 @@ export default function Message(props: any) {
           <button
             style={{'background': `rgb(${color})`}}
             className="btn btn-primary"
-            onClick={e => e.preventDefault()}
+            onClick={(event: any) => event.preventDefault()}
           >
             {
               emojiList.map((v, key) => {

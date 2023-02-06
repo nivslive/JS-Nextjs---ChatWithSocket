@@ -552,6 +552,13 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
+"@types/react-dom@^16.8 || ^17.0 || ^18.0", "@types/react-dom@^18.0.10":
+  "integrity" "sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg=="
+  "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.10.tgz"
+  "version" "18.0.10"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.8 || ^17.0 || ^18.0":
   "integrity" "sha512-+j2hk9BzCOrrOSJASi5XiOyBbERk9jG5O73Ya4M0env5Ixi6vUNli4qy994AINcEF+1IEHISYFfIT4zwr++LKw=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.8.tgz"
@@ -782,6 +789,11 @@
   "version" "3.0.0"
   dependencies:
     "event-target-shim" "^5.0.0"
+
+"ace-builds@^1.15.0", "ace-builds@^1.4.14":
+  "integrity" "sha512-L1RXgqxDvzbJ7H8Y2v9lb4kHaZRn5JNTECG+oZTH2EDewMmpQMLDC4GnFKIh3+xb/gk2nVPO7gGwpTYPw91QzA=="
+  "resolved" "https://registry.npmjs.org/ace-builds/-/ace-builds-1.15.0.tgz"
+  "version" "1.15.0"
 
 "acorn-import-assertions@^1.7.6":
   "integrity" "sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw=="
@@ -1438,6 +1450,11 @@
 
 "depd@^1.1.2":
   "version" "1.1.2"
+
+"diff-match-patch@^1.0.5":
+  "integrity" "sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw=="
+  "resolved" "https://registry.npmjs.org/diff-match-patch/-/diff-match-patch-1.0.5.tgz"
+  "version" "1.0.5"
 
 "diff@^5.1.0":
   "version" "5.1.0"
@@ -2786,6 +2803,16 @@
     "emojis-list" "^3.0.0"
     "json5" "^2.1.2"
 
+"lodash.get@^4.4.2":
+  "integrity" "sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ=="
+  "resolved" "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
+  "version" "4.4.2"
+
+"lodash.isequal@^4.5.0":
+  "integrity" "sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ=="
+  "resolved" "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz"
+  "version" "4.5.0"
+
 "lodash.merge@^4.6.2":
   "integrity" "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
   "resolved" "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
@@ -3466,7 +3493,7 @@
   dependencies:
     "read" "1"
 
-"prop-types@^15.8.1":
+"prop-types@^15.7.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -3523,6 +3550,17 @@
   dependencies:
     "safe-buffer" "^5.1.0"
 
+"react-ace@^10.1.0":
+  "integrity" "sha512-VkvUjZNhdYTuKOKQpMIZi7uzZZVgzCjM7cLYu6F64V0mejY8a2XTyPUIMszC6A4trbeMIHbK5fYFcT/wkP/8VA=="
+  "resolved" "https://registry.npmjs.org/react-ace/-/react-ace-10.1.0.tgz"
+  "version" "10.1.0"
+  dependencies:
+    "ace-builds" "^1.4.14"
+    "diff-match-patch" "^1.0.5"
+    "lodash.get" "^4.4.2"
+    "lodash.isequal" "^4.5.0"
+    "prop-types" "^15.7.2"
+
 "react-color-palette@^6.2.0":
   "integrity" "sha512-9rIboaRJNoeF8aCI2f3J8wgMyhl74SnGmZLDjor3bKf0iDBhP2EBv0/jGmm0hrj6OackGCqtWl5ZvM89XUc3sg=="
   "resolved" "https://registry.npmjs.org/react-color-palette/-/react-color-palette-6.2.0.tgz"
@@ -3537,7 +3575,7 @@
     "hoist-non-react-statics" "^3.0.0"
     "universal-cookie" "^4.0.0"
 
-"react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^18.2.0", "react-dom@>=18.1.0":
+"react-dom@^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^18.2.0", "react-dom@>=18.1.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -3567,7 +3605,7 @@
     "react-is" "^18.0.0"
     "use-sync-external-store" "^1.0.0"
 
-"react@*", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^18.2.0", "react@>= 16.3.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.3", "react@>=16.8.0", "react@>=18.1.0":
+"react@*", "react@^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^18.2.0", "react@>= 16.3.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.3", "react@>=16.8.0", "react@>=18.1.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

@@ -6,8 +6,18 @@ import axios from 'axios';
 export default function List(props: any) {
     const [filter, setFilter] = useState<any[]>([]);
     const [created, setCreated] = useState(false);
+    console.log(props.open, 'open??');
+    setTimeout(() => {
+        document.querySelector<any>('.List_insideChat__yjqPN').style.transition = `2s`
+        document.querySelector<any>('.List_insideChat__yjqPN').setAttribute(`style`,       
+         props.open ? 
+          `transform: translate(-200%, -50%);` 
+           :  
+          `transform: translate(-50%,-50%)`, `!important` ) 
+  
+      }, 50
+    )
     useEffect(() => {
-
       if(!created) {
         showRooms()
         setCreated(true)

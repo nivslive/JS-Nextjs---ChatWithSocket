@@ -18,12 +18,14 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.2",
     "ably": "1.2.5-beta.1",
+    "ace-builds": "^1.15.0",
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "next": "^13.1.6",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18.2.0",
+    "react-ace": "^10.1.0",
     "react-color-palette": "^6.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
@@ -34,6 +36,7 @@
     "sass": "^1.58.0"
   },
   "devDependencies": {
+    "@types/react-dom": "^18.0.10",
     "babel-eslint": "^10.1.0",
     "eslint": "8.13.0",
     "eslint-config-next": "^13.1.6",
