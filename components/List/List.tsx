@@ -3,8 +3,8 @@ import style from "./List.module.css";
 import axios from 'axios';
 // import dynamic from "next/dynamic";
 
-export default function List(props) {
-    const [filter, setFilter] = useState([]);
+export default function List(props: any) {
+    const [filter, setFilter] = useState<any[]>([]);
     const [created, setCreated] = useState(false);
     useEffect(() => {
 
@@ -16,16 +16,16 @@ export default function List(props) {
     })
     
     const showRooms = async () => {
-      let filtered = []
-      let res = []
+      let filtered: any[] = []
+      let res: any[] = []
 
       await axios.get('http://localhost:3333/chat').then((v) => {
       res = v.data
       console.log(res, 'rees')
       })
 
-      Object.entries(res).map((v) => {
-        filtered.push(Object.entries(v[1]))
+      Object.entries<any[]>(res).map((v: any) => {
+        filtered.push(Object.entries<any>(v[1]));
       })
       
       filtered.map(v => {

@@ -46,33 +46,11 @@ export default function Message(props: any) {
         setResponseMessages(array);
         console.log(responseMessages, 'favorites')
       }
-
-    /*  filtered.map(v => {
-        v[6] = Object.entries(v[6])
-      })
-
-      filtered.map(v => {
-        v[5][1] = v[5][1] !== null && Object.entries(v[5][1])
-        v[6][1][1] = v[6][1][1] !== null && Object.entries(v[6][1][1])
-      })*/
-
-     /* const scripted = document.createElement("script");
-      scripted.src =
-        "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
-      document.body.appendChild(scripted);
-      scripted.addEventListener("load", () => {
-        $("#send").click(() => {
-          setTimeout(() => {
-            let scroll = $("#field").scrollTop();
-            $("#field").scrollTop(scroll + 1080);
-          }, 10);
-        });
-      });*/
     }
 
   });
 
-  const changeMessage = (e) => {
+  const changeMessage = (e: any) => {
     console.log(e.target.value.length)
     // feature do #emoji capturado por #hashtags
     //emojiList.map((v) => {
@@ -81,7 +59,7 @@ export default function Message(props: any) {
     if(e.target.value === '#')
     console.log(e.target.value)
     if(emojiName) {
-      emojiName.map((v) => {
+      emojiName.map((v: any) => {
         if(e.target.value.match(`#${v}`)){
           setEmojiName([...emojiName, v])
         }
@@ -104,15 +82,15 @@ export default function Message(props: any) {
       setCharacterLength(0);
   };
 
-  cha.subscribe(props.slug, (data) => {
+  cha.subscribe(props.slug, (data: any) => {
    setField([...field, data.data]);
    console.log(data.data, 'data?')
   });
-  const Submit = (e) => {
+  const Submit = (e: any) => {
     e.preventDefault();
     e.target.reset();
   };
-  const handleColor = (e) => { 
+  const handleColor = (e:any) => { 
     try {
       const item = document.querySelector<any>('.rcp-fields-element-input')
       setColor(item.value)
@@ -128,7 +106,7 @@ export default function Message(props: any) {
     // document.querySelector('.rcp-fields-element .hex-element').style.display = 'none'
   }
 
-  const enterPressed = (e) => {
+  const enterPressed = (e:any) => {
     if(message !== '') {
       e.key === 'Enter' && handleMessage()
     }
@@ -156,7 +134,7 @@ export default function Message(props: any) {
     setMoreInfo(false)
   }
 
-  const darkModeRules = (e) => {
+  const darkModeRules = (e:any) => {
     setDarkMode(!darkMode)
   }
 
@@ -171,7 +149,7 @@ export default function Message(props: any) {
     <div className={style.main}>
       <List listInsideChat={true} />
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
-        {field.map((p, k) => {
+        {field.map((p: any, k:any) => {
           if (me.USER != p.user.USER) {
             return (
               <div className={style.other} key={k}>
@@ -182,8 +160,13 @@ export default function Message(props: any) {
                   </strong>
 
                   { 
-                    p.emoji.map((v, key) =>  {  
-                      return (<img key={key} className={style.emoji} src={`../emojis/${v}.png`} />) } 
+                    p.emoji.map((v:any, key:any) =>  {  
+                      return (                  <Image 
+                        key={key}
+                        className={style.emoji}
+                        alt="image profile"
+                        src={`../emojis/${v}.png`}
+                        />) } 
                     )  
                   }
                 </p>
@@ -191,8 +174,11 @@ export default function Message(props: any) {
                 <br />
                 <div id={style.mess_sender}>
                   <Favorite />
-                  <img className={style.image_profile}
-                  src={p.user.IMAGE_PROFILE} 
+
+                  <Image 
+                  className={style.image_profile}
+                  alt="image profile"
+                  src={p.user.IMAGE_PROFILE}
                   />
                   <a style={{'color': darkMode ? 'white' : 'black'}}>{"@" + p.user.USER}</a>
                 </div>
@@ -208,8 +194,8 @@ export default function Message(props: any) {
                       {p.message}
                     </strong>
                     { 
-                      p.emoji.map((v, keyEmoji) =>  {  
-                        return (<img key={keyEmoji} className={style.emoji} src={`../emojis/${v}.png`} />) } 
+                      p.emoji.map((v: any, keyEmoji: any) =>  {  
+                        return (<Image alt="emoji" key={keyEmoji} className={style.emoji} src={`../emojis/${v}.png`} />) } 
                       )  
                     }
                   </p>
@@ -243,7 +229,7 @@ export default function Message(props: any) {
 
             <div className={`${style.logoBox} d-flex justify-content-center align-items-center`}>
               <h5 className={`${style.littleLogo}`}> yorus.club </h5> 
-              <img className={style.logoIcon} src="../icon.png"/>
+              <Image alt="logo icon" className={style.logoIcon} src="../icon.png"/>
             </div>
 
             <button   style={{'position': `relative`, 'width': '36px', 'height': '36px'}}  
@@ -284,13 +270,13 @@ export default function Message(props: any) {
 
       <div className={style.form_sender}>
 
-          <Color open={modalColor} onChange={e => setColor(e.target.value)}/>
+          <Color open={modalColor} onChange={(e:any) => setColor(e.target.value)}/>
         <form onSubmit={Submit}>
           
           <input placeholder="Escreva o que está pensando. Mas cuidado pra não magoar ninguém." className="input-send" onChange={changeMessage}  onKeyPress={enterPressed}  />
-          <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 && style.emoji_bar}>
-          { emojiName.map((v, key) => {
-              return <img key={key} className={style.emoji} src={`../emojis/${v}.png`} />
+          <div style={{'background': `rgb(${color})`}} className={ emojiName.length !== 0 ? style.emoji_bar : ''}>
+          { emojiName.map((v: any, key: any) => {
+              return <Image alt="emoji" key={key} className={style.emoji} src={`../emojis/${v}.png`} />
             }) }
 
           </div>
@@ -301,11 +287,11 @@ export default function Message(props: any) {
           >
             {
               emojiList.map((v, key) => {
-                return (<img key={key} src={`../emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
+                return (<Image alt="set emoji" key={key} src={`../emojis/${v}.png`} className={style.emoji} onClick={() => {setEmoji(!emoji); setEmojiName(() => [...emojiName, v]); }}/>)
               })
             }
-            <img onClick={() => {handleModalColor()}} style={{'width': '20px', 'marginLeft': '10px'}} src="../icons/colorPicker.png" />
-            { modalColor && <img onClick={handleColor} ref={animation} style={{'width': '30px'}} src="../icons/acceptColorPicker.png" /> }
+            <Image alt="color picker icon" onClick={() => {handleModalColor()}} style={{'width': '20px', 'marginLeft': '10px'}} src="../icons/colorPicker.png" />
+            { modalColor && <Image alt="accept color picker" onClick={handleColor} ref={animation} style={{'width': '30px'}} src="../icons/acceptColorPicker.png" /> }
 
 
             <svg
