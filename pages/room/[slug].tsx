@@ -10,16 +10,16 @@ export default function Home() {
   const [logged, setLogged] = useState(0);
   const router = useRouter();
   const [room, setRoom] = useState(''); 
-  const [response, setResponse] = useState([]);
+  const [response, setResponse] = useState<any>([]);
   const [responsed, setResponsed] = useState(true);
   let username = Users;
 
-  const setUser = (e) => {
+  const setUser = (e: any) => {
 
     setUsers({...Users,"USER": e.target.value});
   };
 
-  const form = (e) => {
+  const form = (e: any) => {
     console.log(Users)
     if (Users !== "") {
       setLogged(1);
@@ -35,7 +35,7 @@ export default function Home() {
     setTimeout(() => {
       console.log(router.query.slug)
       if(responsed) {
-        axios.get('http://localhost:3333/chat/room/' + router.query.slug).then(v => {
+        axios.get('http://localhost:3333/chat/room/' + router.query.slug).then((v: any) => {
           console.log(v)
           setResponse(v.data)
           setRoom(v.data.room)
@@ -45,15 +45,14 @@ export default function Home() {
     }, 1000)
 
     // setRoom(router.query.slug)
-    var fileInput = document.getElementById('fileInput');
-		var fileDisplayArea = document.getElementById('fileDisplayArea');
-
-    console.log(fileInput)
+    const fileInput: HTMLElement | null  | any = document.getElementById('fileInput');
+		const fileDisplayArea: any = document.getElementById('fileDisplayArea');
     try{
-      fileInput.addEventListener('change', function(e) {
-			var file = fileInput.files[0];
+      if(!fileInput) return
+      fileInput.addEventListener('change', function(e: Event) {
+			const file: any = fileInput.files[0];
       console.log(file, 'file')
-			var imageType = /image.*/;
+			const imageType = /image.*/;
 
 			if (file.type.match(imageType)) {
 				var reader = new FileReader();
@@ -61,12 +60,12 @@ export default function Home() {
 				reader.onload = function(e) {
 					fileDisplayArea.innerHTML = "";
 
-					var img = new Image();
+					let img: any = new Image();
 					img.src = reader.result;
           img.classList.add('imageFlask')
           setUsers({...Users, "IMAGE_PROFILE": reader.result })
 					fileDisplayArea.appendChild(img);
-          document.querySelector('#fileDisplayArea img').style.width = '50px'
+          document.querySelector<any>('#fileDisplayArea img').style.width = '50px'
 				}
 
 				reader.readAsDataURL(file);	
@@ -74,7 +73,7 @@ export default function Home() {
 				fileDisplayArea.innerHTML = "File not supported!"
 			}
 		});
-    document.querySelector('#fileDisplayArea img').style.width = '50px'
+    document.querySelector<any>('#fileDisplayArea img').style.width = '50px'
 
     }catch(e) {
 
@@ -82,7 +81,7 @@ export default function Home() {
 		
   })
 
-  const Messages = dynamic(() => import("../../components/messages/Messages.tsx"));
+  const Messages = dynamic(() => import("../../components/messages/Messages"));
   const Navbar = dynamic(() => import("../../components/navbar/Navbar"));
   const Logo = dynamic(() => import("../../components/Logo/Logo"));
   return (
