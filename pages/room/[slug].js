@@ -1,7 +1,6 @@
 import axios from 'axios';
 import dynamic from "next/dynamic";
-import React, { useState, useEffect, useRef } from "react";
-import { setCookies, useCookies } from "react-cookie";
+import React, { useState, useEffect } from "react";
 import style from "../../styles/Home.module.css";
 import { useRouter } from 'next/router'
 
@@ -12,7 +11,7 @@ export default function Home() {
   const [room, setRoom] = useState(''); 
   const [response, setResponse] = useState([]);
   const [responsed, setResponsed] = useState(true);
-  var username = Users;
+  let username = Users;
 
   const setUser = (e) => {
 
