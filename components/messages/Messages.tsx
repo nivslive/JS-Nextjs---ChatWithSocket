@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Ably from '../../server/server'
 import React, { useState, useEffect } from "react";
-import style from "./Messages.module.css";
+import style from "./Messages.module.scss";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Color from "../ColorPicker/ColorPicker";
 import jsonEmojis from "../../docs/emojis.json"
@@ -146,7 +146,7 @@ export default function Message(props: any) {
   }
 
   return (
-    <div className={style.main}>
+    <div className={`${style.main}`}>
       <List listInsideChat={true} />
       <div  ref={animation} className={style.fieldset} id="field" style={{'background': darkMode ? 'transparent' : 'white'}}>
         {field.map((p: any, k:any) => {

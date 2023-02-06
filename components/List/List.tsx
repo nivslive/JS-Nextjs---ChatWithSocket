@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import style from "./List.module.css";
+import style from "./List.module.scss";
 import axios from 'axios';
 // import dynamic from "next/dynamic";
 
@@ -28,11 +28,11 @@ export default function List(props: any) {
         filtered.push(Object.entries<any>(v[1]));
       })
       
-      filtered.map(v => {
+      filtered.map((v: any) => {
         v[6] = Object.entries(v[6])
       })
 
-      filtered.map(v => {
+      filtered.map((v: any) => {
         v[5][1] = v[5][1] !== null && Object.entries(v[5][1])
         v[6][1][1] = v[6][1][1] !== null && Object.entries(v[6][1][1])
       })
@@ -45,7 +45,7 @@ export default function List(props: any) {
     <button onClick={() => showRooms()}> Mais Populares</button>
     </span>
 
-    {filter.map((item, key) => 
+    {filter.map((item: any, key: number) => 
           <div className={style.itemModalListRooms} style={{color: `white`}} key={key}>
               <h6>  {item[1][1]} </h6>
               <div className={style.modalListItemOption}>
