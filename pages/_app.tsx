@@ -5,7 +5,7 @@ import "../styles/style.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react';
 import { wrapper } from "../store";
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   return (
     <Component {...pageProps} />
   );

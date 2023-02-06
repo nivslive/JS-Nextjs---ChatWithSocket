@@ -190,8 +190,8 @@ export default function Message(props: any) {
             );
           } else {
             return (
-              <div className={style.me} >
-                <div  className={style.message_sent} style={{'background': `rgb(${p.color})`}}>
+              <div key={k} className={style.me} >
+                <div className={style.message_sent} style={{'background': `rgb(${p.color})`}}>
                   <p>
 
                     <strong className={`pr-3`}>
@@ -202,11 +202,11 @@ export default function Message(props: any) {
                         return (<Image width="200" height="200" alt="emoji" key={keyEmoji} className={style.emoji} src={`/emojis/${v}.png`} />) } 
                       )  
                     }
+                    <Favorite />
                   </p>
                 </div>
                 <br />
                 <div id={style.mess_sender}>
-                <Favorite />
                 <Image
                   width="200" height="200"
                   className={style.image_profile}

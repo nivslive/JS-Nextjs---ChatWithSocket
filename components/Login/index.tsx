@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAuthState } from "../slices/authSlice";
+import { selectAuthState } from "../../slices/authSlice";
 import axios from "axios";
 
 export default function Login() {
@@ -79,7 +79,7 @@ export default function Login() {
     }
 		
   })
-  const Logo = dynamic(() => import("../components/Logo/Logo"));
+  const Logo = dynamic(() => import("../../components/Logo/Logo"));
   return (
         <div className="registration-form">
           <form onSubmit={form}>
